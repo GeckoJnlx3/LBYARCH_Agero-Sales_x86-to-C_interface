@@ -15,12 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="asmfunc.asm">
+    <CustomBuild Include="stencil1DComputation.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="stencil1DComputation_C_Caller.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\stencil1DComputation_C.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
