@@ -5,7 +5,7 @@
 extern float stencil1DComputation(long long int offset, float X[]);
 
 int main() {
-    int n = 8;
+    int n = 10;
     float* X = (float*)malloc(n * sizeof(float));
 
     for (int i = 0; i < n; i++) {

@@ -13,7 +13,10 @@ stencil1DComputation:
     push rcx ; offset
     push rdx ; X
     mov r8, [window_size]
-    push r8 ; window_size
+    add r8, rcx
+    push r8 ; window_size+offset
+    mov r9, rcx
+    push r9 ; iterator
     movss xmm0, [sum]
     call LOOP
     pop rsi
@@ -21,24 +24,18 @@ stencil1DComputation:
 
 
 LOOP:
-    movss xmm1, [rdx + rcx*4] ; access element in X using offset * 4 for float
-
+    movss xmm1, [rdx + r9*4] ; access element in X using offset * 4 for float
     addss xmm0, xmm1 ; add current sum + current element
+    inc r9     ; offset++
 
-    ; compute for window_size + offset
-    add r8, rcx
-
-    ; offset++
-    inc rcx
-    mov r8, [window_size]
-
-    ; below this sets off the error when put pero pwede ring nasa taas ung error
     ; offset < window_size + offset
-    cmp rcx, r8
+    cmp r9, r8 
     jl LOOP
 
-    ret 24
+    ret 32
 
 
     
+
+
 
