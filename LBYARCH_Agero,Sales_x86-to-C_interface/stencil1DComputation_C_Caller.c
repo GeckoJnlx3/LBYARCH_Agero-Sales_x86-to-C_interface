@@ -2,20 +2,30 @@
 #include <stdlib.h>
 #define WINDOW_SIZE 7
 
-extern float* stencil1DComputation(long long int n, float X[]);
+extern float stencil1DComputation(long long int offset, float X[]);
 
 int main() {
-	int n = 8;
-	float* X = (float*)malloc(n * sizeof(float));
-	
-	int arrYSize = (n - 7) + 1;
-	float* Y = (float*)malloc(arrYSize * sizeof(float));
+    int n = 8;
+    float* X = (float*)malloc(n * sizeof(float));
 
-	Y = stencil1DComputation(n, X);
+    for (int i = 0; i < n; i++) {
+        X[i] = i+1;
+    }
 
-	for (int i = 0; i < arrYSize; i++) {
-		printf("%.3f", Y[i]);
-	}
+    int offset = 0;
 
-	return 0;
+    int arrYSize = (n - 7) + 1;
+    float* Y = (float*)malloc(arrYSize * sizeof(float));
+
+    for (int i = 0; i < arrYSize; i++) {
+        Y[i] = stencil1DComputation(offset, X);
+        offset++;
+    }
+
+    for (int i = 0; i < arrYSize; i++) {
+        printf("%.3f\n", Y[i]);
+    }
+
+
+    return 0;
 }
