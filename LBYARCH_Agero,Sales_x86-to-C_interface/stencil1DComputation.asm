@@ -12,8 +12,8 @@ stencil1DComputation:
     push rsi
     push rcx ; offset
     push rdx ; X
-    xor r8, r8
-    push r8 ; offset+window_size
+    mov r8, [window_size]
+    push r8 ; window_size
     movss xmm0, [sum]
     call LOOP
     pop rsi
@@ -26,11 +26,11 @@ LOOP:
     addss xmm0, xmm1 ; add current sum + current element
 
     ; compute for window_size + offset
-    add r8, [window_size]
     add r8, rcx
 
     ; offset++
     inc rcx
+    mov r8, [window_size]
 
     ; below this sets off the error when put pero pwede ring nasa taas ung error
     ; offset < window_size + offset
