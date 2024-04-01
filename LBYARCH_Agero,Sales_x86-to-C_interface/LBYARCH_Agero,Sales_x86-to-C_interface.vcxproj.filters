@@ -23,7 +23,7 @@
     <ClCompile Include="stencil1DComputation_C_Caller.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\stencil1DComputation_C.c">
+    <ClCompile Include="..\..\..\..\..\Downloads\stencil1DComputation_C.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
