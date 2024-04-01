@@ -55,18 +55,21 @@ int main() {
     end_C = clock();
 
     //Comparative printing of output
-    //printf("ASM + C vs Pure C. Length: %.0lf\n", n);
-    //printf("Values of Y[]:\n");
-    //printf("ASM + C \t\tPure C\n");
-    //for (int i = 0; i < arrYSize; i++) {
-    //    printf("%.3f\t\t%.3f\n ", Y_ASM[i], Y_C[i]);
-    //}
+    printf("ASM + C vs Pure C. Length: %.0lf\n", n);
+    printf("Values of Y[]:\n");
+    printf("ASM + C \t\tPure C\n");
+
+    int printLength = arrYSize < 10 ? arrYSize : 10;
+
+    for (int i = 0; i < printLength; i++) {
+        printf("%.3f\t\t%.3f\n ", Y_ASM[i], Y_C[i]);
+    }
     
     total_ASM = (double)(end_ASM - start_ASM) / CLOCKS_PER_SEC;
     total_C = (double)(end_C - start_C) / CLOCKS_PER_SEC;
 
     //comparative printing of time
-    printf("Time taken (in seconds): \n");
+    printf("\nTime taken (in seconds): \n");
     printf("ASM + C \tPure C\n");
     printf("%.3f\t\t%.3f\n", total_ASM, total_C);
 
